@@ -1,1 +1,53 @@
-<p>users works!</p>
+<h2>Users Data</h2>
+
+<!-- Modal -->
+<label for="user-add" class="button primary">Add user</label>
+
+<input type="checkbox" id="user-add" class="modal">
+<div>
+  <div class="card fluid">
+    <label for="user-add" class="modal-close"></label>
+
+    <fieldset>
+      <legend>Add user</legend>
+    </fieldset>
+
+    <label>Nim</label>
+    <input type="text">
+
+    <label>Name</label>
+    <input type="text">
+
+    <button class="button primary">Save</button>
+
+  </div>
+</div>
+<!-- Modal -->
+
+<table class="hoverable">
+  <caption>Users</caption>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Nim</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td data-label="Name">
+        <input type="text">
+      </td>
+      <td data-label="Name">Name</td>
+      <td data-label="Action">
+        <a href="javascrip:;">Edit</a>
+        <a href="javascrip:;">Delete</a>
+      </td>
+    </tr>
+    <tr>
+      <td data-label="Nim">Adam</td>
+      <td data-label="Name">Smith</td>
+      <td data-label="Action">TheSmith</td>
+    </tr>
+  </tbody>
+</table>
