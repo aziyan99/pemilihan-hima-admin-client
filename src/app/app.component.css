@@ -1,0 +1,45 @@
+.sidebar {
+  height: 100%;
+  border-right: 1px solid #BFBFBF;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.row {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.menu {
+  margin: 0;
+  padding: 0;
+}
+
+.menu-item {
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #BFBFBF;
+  margin-bottom: 10px;
+}
+
+.menu-title {
+  width: 100%;
+  padding: 0;
+  margin-left: 0;
+  border-bottom: 1px solid #BFBFBF;
+  margin-bottom: 50px;
+  margin-top: 30px;
+}
+
+ul li a {
+  margin-left: 20px;
+  color: black;
+  font-size: 16px;
+}
