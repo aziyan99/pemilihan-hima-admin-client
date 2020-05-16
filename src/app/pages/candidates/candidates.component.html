@@ -1,1 +1,49 @@
-<p>candidates works!</p>
+<h2>Candidates Data</h2>
+
+<div class="row">
+  <div class="col-md-8">
+
+    <table class="hoverable">
+      <thead>
+        <tr>
+          <th>Nim</th>
+          <th>Name</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let candidate of candidateData">
+          <td>{{ candidate.nim }}</td>
+          <td>{{ candidate.name }}</td>
+          <td>
+            <a href="javascript:;" (click)="deleteData(candidate.id)">Delete</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+
+  </div>
+  <div class="col-md-4">
+
+    <div class="card">
+
+      <h3 class="section dark">Add candidates</h3>
+
+      <span class="button error" *ngIf="errorM">Fail!</span>
+      <span class="button success" *ngIf="successM">Success!</span>
+
+      <div class="section">
+        <input type="text" placeholder="Nim" [(ngModel)]="insertCandidate.nim">
+      </div>
+
+      <button class="primary" (click)="saveData()" *ngIf="btnAdd">Save</button>
+      <div style="text-align: center;" *ngIf="loading">
+        <div class="spinner primary"></div>
+      </div>
+
+    </div>
+
+
+  </div>
+</div>
