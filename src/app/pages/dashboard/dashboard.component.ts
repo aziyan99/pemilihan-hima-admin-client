@@ -124,16 +124,29 @@ export class DashboardComponent implements OnInit {
       this.userService.getById(localStorage.getItem('nim'))
         .subscribe(data => {
           this.profileData = data;
-          this.userData = {
-            name: this.profileData.data.name,
-            nim: this.profileData.data.id,
-            access: this.profileData.data.access
-          };
+          if (this.profileData.data.access !== 'admin') {
+            this.blocked();
+          } else {
+            this.userData = {
+              name: this.profileData.data.name,
+              nim: this.profileData.data.id,
+              access: this.profileData.data.access
+            };
+          }
         }, error => {
 
         });
     }
+  }
 
+  blocked() {
+    localStorage.removeItem('_himatoken');
+    localStorage.removeItem('nim');
+    this.loginItem = {
+      nim: '',
+      password: ''
+    };
+    this.blockedPage = true;
   }
 
 }
