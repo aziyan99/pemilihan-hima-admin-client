@@ -9,6 +9,8 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class DashboardComponent implements OnInit {
 
+  blockedPage = false;
+
   loginRes: any;
   loginPage = true;
   loading = false;
