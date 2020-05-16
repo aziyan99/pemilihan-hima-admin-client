@@ -1,76 +1,88 @@
-<div *ngIf="!loginPage">
-  <h2>Dashboard</h2>
+<div *ngIf="!blockedPage">
+  <div *ngIf="!loginPage">
+    <h2>Dashboard</h2>
 
-  <div class="row">
-    <div class="col-lg-6">
+    <div class="row">
+      <div class="col-lg-6">
 
-      <div class="card large">
-        <h3 class="section dark">Your Acoount</h3>
-        <div class="section">
-          <ul>
-            <li>{{ userData.name }}</li>
-            <li>{{ userData.nim }}</li>
-            <li>{{ userData.access }}</li>
-          </ul>
+        <div class="card large">
+          <h3 class="section dark">Your Acoount</h3>
+          <div class="section">
+            <ul>
+              <li>{{ userData.name }}</li>
+              <li>{{ userData.nim }}</li>
+              <li>{{ userData.access }}</li>
+            </ul>
+          </div>
+          <div class="section">
+            <button class="tertiary" (click)="logout()">Logout</button>
+          </div>
         </div>
-        <div class="section">
-          <button class="tertiary" (click)="logout()">Logout</button>
+
+      </div>
+      <div class="col-lg-6">
+
+
+        <div class="card">
+          <h3 class="section dark">Change Password</h3>
+
+          <div class="button success" *ngIf="passSuccess">Success!</div>
+
+
+          <div class="button error" *ngIf="passError">Fail!</div>
+
+          <div class="section">
+            <input type="password" placeholder="Old password" [(ngModel)]="passwordItem.oldPassword">
+          </div>
+
+          <div class="section">
+            <input type="password" placeholder="New password" [(ngModel)]="passwordItem.newPassword">
+          </div>
+
+          <button class="primary" (click)="changePassword()" *ngIf="passBtn">Submit</button>
+          <div style="text-align: center;" *ngIf="passLoading">
+            <div class="spinner primary"></div>
+          </div>
+
         </div>
+
+      </div>
+    </div>
+
+
+
+
+
+  </div>
+
+  <div style="width: 100%; margin-top: 100px; text-align: center;" *ngIf="loginPage">
+    <div class="card small" style=" margin:auto;">
+      <h3 class="section">Login first</h3>
+      <div class="button error" *ngIf="error">Invalid login!</div>
+
+      <div class="section dark">
+        <input type="text" placeholder="Nim" [(ngModel)]="loginItem.nim">
       </div>
 
-    </div>
-    <div class="col-lg-6">
+      <div class="section dark">
+        <input type="password" placeholder="Password" [(ngModel)]="loginItem.password">
+      </div>
 
-
-      <div class="card">
-        <h3 class="section dark">Change Password</h3>
-
-        <div class="button success" *ngIf="passSuccess">Success!</div>
-
-
-        <div class="button error" *ngIf="passError">Fail!</div>
-
-        <div class="section">
-          <input type="password" placeholder="Old password" [(ngModel)]="passwordItem.oldPassword">
-        </div>
-
-        <div class="section">
-          <input type="password" placeholder="New password" [(ngModel)]="passwordItem.newPassword">
-        </div>
-
-        <button class="primary" (click)="changePassword()" *ngIf="passBtn">Submit</button>
-        <div style="text-align: center;" *ngIf="passLoading">
-          <div class="spinner primary"></div>
-        </div>
-
+      <button class="primary" (click)="login()" *ngIf="loginBtn">Login</button>
+      <div style="align-items: center;" *ngIf="loading">
+        <div class="spinner primary"></div>
       </div>
 
     </div>
   </div>
-
-
-
-
-
 </div>
 
-<div style="width: 100%; margin-top: 100px; text-align: center;" *ngIf="loginPage">
-  <div class="card small" style=" margin:auto;">
-    <h3 class="section">Login first</h3>
-    <div class="button error" *ngIf="error">Invalid login!</div>
+<div *ngIf="blockedPage">
 
-    <div class="section dark">
-      <input type="text" placeholder="Nim" [(ngModel)]="loginItem.nim">
-    </div>
+  <div style="width: 100%; margin-top: 100px; text-align: center;" *ngIf="blockedPage">
 
-    <div class="section dark">
-      <input type="password" placeholder="Password" [(ngModel)]="loginItem.password">
-    </div>
-
-    <button class="primary" (click)="login()" *ngIf="loginBtn">Login</button>
-    <div style="align-items: center;" *ngIf="loading">
-      <div class="spinner primary"></div>
-    </div>
+    <h3>We are sorry you dont have access to this page :v</h3>
 
   </div>
+
 </div>
