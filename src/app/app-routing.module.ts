@@ -6,6 +6,7 @@ import { CandidatesComponent } from './pages/candidates/candidates.component';
 
 
 const routes: Routes = [
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'user', component: UsersComponent },
   { path: 'candidate', component: CandidatesComponent },

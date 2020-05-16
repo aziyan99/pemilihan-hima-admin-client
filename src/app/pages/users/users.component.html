@@ -1,53 +1,76 @@
 <h2>Users Data</h2>
 
-<!-- Modal -->
-<label for="user-add" class="button primary">Add user</label>
+<div class="row">
+  <div class="col-md-8">
 
-<input type="checkbox" id="user-add" class="modal">
-<div>
-  <div class="card fluid">
-    <label for="user-add" class="modal-close"></label>
+    <table class="hoverable">
+      <thead>
+        <tr>
+          <th>Nim</th>
+          <th>Name</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of userObj">
+          <td data-label="Nim">{{ user.id }}</td>
+          <td data-label="Name">{{ user.name }}</td>
+          <td data-label="Action" *ngIf="nim != user.id; else adminShow">
+            <a href="javascrip:;" (click)="setEditForm(user.id)">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="javascrip:;" (click)="deleteData(user.id)">Delete</a>
+          </td>
+          <ng-template #adminShow>
+            <td>
+              <mark class="secondary">{{ user.access }}</mark>
+            </td>
+          </ng-template>
+        </tr>
+      </tbody>
+    </table>
 
-    <fieldset>
-      <legend>Add user</legend>
-    </fieldset>
 
-    <label>Nim</label>
-    <input type="text">
+  </div>
+  <div class="col-md-4">
 
-    <label>Name</label>
-    <input type="text">
+    <div class="card" *ngIf="addForm">
 
-    <button class="button primary">Save</button>
+      <h3 class="section dark">Add user</h3>
+      <span class="button error" *ngIf="errorM">Invalid!</span>
+      <span class="button success" *ngIf="successM">Success</span>
+      <div class="section">
+        <input type="text" placeholder="Name" [(ngModel)]="userData.name">
+      </div>
+      <div class="section">
+        <input type="text" placeholder="Nim" [(ngModel)]="userData.nim">
+      </div>
+
+      <button class="primary" (click)="saveData()" *ngIf="btnSave">Save</button>
+      <div style="text-align: center;" *ngIf="loading">
+        <div class="spinner primary"></div>
+      </div>
+
+    </div>
+
+    <div class="card" *ngIf="editForm">
+
+      <h3 class="section dark">Update user</h3>
+
+      <span class="button error" *ngIf="errorM">Invalid!</span>
+      <span class="button success" *ngIf="successM">Success</span>
+
+      <div class="section">
+        <input type="text" placeholder="Name" [(ngModel)]="userData.name">
+      </div>
+      <div class="section">
+        <input type="text" placeholder="Nim" [(ngModel)]="userData.nim">
+      </div>
+
+      <button class="primary" (click)="updateData()" *ngIf="btnSave">Update</button>
+      <div style="text-align: center;" *ngIf="loading">
+        <div class="spinner primary"></div>
+      </div>
+
+    </div>
 
   </div>
 </div>
-<!-- Modal -->
-
-<table class="hoverable">
-  <caption>Users</caption>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Nim</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td data-label="Name">
-        <input type="text">
-      </td>
-      <td data-label="Name">Name</td>
-      <td data-label="Action">
-        <a href="javascrip:;">Edit</a>
-        <a href="javascrip:;">Delete</a>
-      </td>
-    </tr>
-    <tr>
-      <td data-label="Nim">Adam</td>
-      <td data-label="Name">Smith</td>
-      <td data-label="Action">TheSmith</td>
-    </tr>
-  </tbody>
-</table>
