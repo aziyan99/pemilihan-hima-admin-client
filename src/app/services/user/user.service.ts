@@ -30,4 +30,8 @@ export class UserService {
     return this.http.delete(baseUrl + '/user/' + id + '?token=' + localStorage.getItem('_himatoken'));
   }
 
+  setAdmin(data){
+    return this.http.post(baseUrl + '/user/setadmin?token=' + localStorage.getItem('_himatoken'), data);
+  }
+
 }
