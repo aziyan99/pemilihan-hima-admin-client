@@ -131,4 +131,14 @@ export class UsersComponent implements OnInit {
       });
   }
 
+  setAdmin(id){
+    const data = {
+      'nim': id
+    };
+    this.userService.setAdmin(data)
+      .subscribe(res => {
+        this.ngOnInit();
+      });
+  }
+
 }
