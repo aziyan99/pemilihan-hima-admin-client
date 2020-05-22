@@ -17,7 +17,8 @@
           <td data-label="Name">{{ user.name }}</td>
           <td data-label="Action" *ngIf="nim != user.id; else adminShow">
             <a href="javascrip:;" (click)="setEditForm(user.id)">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="javascrip:;" (click)="deleteData(user.id)">Delete</a>
+            <a href="javascrip:;" (click)="deleteData(user.id)">Delete</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="javascrip:;" (click)="setAdmin(user.id)">Set admin</a>
           </td>
           <ng-template #adminShow>
             <td>
