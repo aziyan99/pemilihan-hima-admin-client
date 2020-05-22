@@ -1,0 +1,57 @@
+<h2>Elections Results</h2>
+
+<div class="row">
+  <div class="col-md-8">
+
+    <table class="hoverable">
+      <thead>
+        <tr>
+          <th>Nim</th>
+          <th>Name</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let result of resultsCandidate">
+        	<td>{{ result.id }}</td>
+        	<td>{{ result.name }}</td>
+        	<td>{{ result.total }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+
+  </div>
+
+  <div class="col-md-4">
+
+  		<button class="tertiary" (click)="clearData()">Clean Data</button>
+
+  </div>
+
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col-md-8">
+	<h2>Raw results</h2>
+    <table class="hoverable">
+      <thead>
+        <tr>
+          <th>Nim</th>
+          <th>Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let result of results">
+        	<td>{{ result.id }}</td>
+        	<td>{{ result.name }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+
+  </div>
+  
+</div>
